@@ -13,10 +13,9 @@ environment:
   BUTLER_API_KEY:
     secure: j7JM5L6KeqpnQukzJLsm7J6oV92SpmyEZLSoED1pZ3gQ79VIkdxtbQmTkqUNZPsz
   matrix:
-    - QTDIR: C:\Qt\5.12.9\mingw73_64
+    - QTDIR: C:\Qt\5.12.9\msvc2017_64
       PYTHONHOME: C:\Python37-x64
-      MINGW: C:\Qt\Tools\mingw730_64
-      DEFAULT_PROFILE: x86_64-w64-mingw32-gcc-7_3_0
+      DEFAULT_PROFILE: MSVC2019-x64
       PUSH_RELEASE: false
     - QTDIR: C:\Qt\5.6.3\mingw49_32
       PYTHONHOME: C:\Python37
@@ -36,7 +35,7 @@ environment:
 matrix:
   exclude:
     - image: Visual Studio 2015
-      QTDIR: C:\Qt\5.12.9\mingw73_64
+      QTDIR: C:\Qt\5.12.9\msvc2017_64
     - image: Visual Studio 2015
       QTDIR: C:\Qt\5.15.0\mingw81_64
     - image: Visual Studio 2019
