@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-16.04
 
     env:
-      QT_INSTALL_DIR: ~/Qt
+      QT_INSTALL_DIR: /home/runner/Qt
       QT_VERSION: 5.15.1
       QTCREATOR_VERSION: 4.13.1
 
@@ -30,9 +30,8 @@ jobs:
       run: |
         export QT_BIN=${QT_INSTALL_DIR}/${QT_VERSION}/gcc_64/bin
         export PATH="${QT_INSTALL_DIR}/Tools/QtCreator/bin:${QT_BIN}:${PATH}"
-        ls ${QT_INSTALL_DIR}/Tools/QtCreator/bin
-        ls ~
         echo $PATH
+        type qbs
         qbs --version
         qbs setup-toolchains --detect
 
