@@ -42,7 +42,6 @@ jobs:
         qbs install --install-root Tiled config:release qbs.installPrefix:/usr projects.Tiled.version:$TILED_VERSION projects.Tiled.enableZstd:true
         cp LICENSE* COPYING *md Tiled/
         ls Tiled/
-        cp src/tiled/images/256/tiled.png Tiled/
 
     - name: Build AppImage
       run: |
