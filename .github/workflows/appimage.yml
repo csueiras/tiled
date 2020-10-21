@@ -30,6 +30,9 @@ jobs:
       run: |
         export QT_BIN=${QT_INSTALL_DIR}/${QT_VERSION}/gcc_64/bin
         export PATH="${QT_INSTALL_DIR}/Tools/QtCreator/bin:${QT_BIN}:${PATH}"
+        ls ${QT_INSTALL_DIR}/Tools/QtCreator/bin
+        ls ~
+        echo $PATH
         qbs --version
         qbs setup-toolchains --detect
 
