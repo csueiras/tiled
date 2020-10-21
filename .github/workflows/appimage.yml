@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt install binutils libgl1-mesa-dev libxkbcommon-x11-0 zlib1g-dev libzstd-dev p7zip-full
+        sudo apt install libgl1-mesa-dev libxkbcommon-x11-0 libzstd-dev
 
     - name: Install Qt
       run: |
@@ -30,13 +30,14 @@ jobs:
       run: |
         export QT_BIN=${QT_INSTALL_DIR}/${QT_VERSION}/gcc_64/bin
         export PATH="${QT_INSTALL_DIR}/Tools/QtCreator/bin:${QT_BIN}:${PATH}"
-        echo $PATH
-        type qbs
         qbs --version
         qbs setup-toolchains --detect
+        qbs config defaultProfile x86_64-linux-gnu-gcc-7
 
     - name: Build
       run: |
+        export QT_BIN=${QT_INSTALL_DIR}/${QT_VERSION}/gcc_64/bin
+        export PATH="${QT_INSTALL_DIR}/Tools/QtCreator/bin:${QT_BIN}:${PATH}"
         export TILED_VERSION=$(date "+%Y.%m.%d")
         qbs install --install-root Tiled config:release qbs.installPrefix:/usr projects.Tiled.version:$TILED_VERSION projects.Tiled.enableZstd:true
         cp LICENSE* COPYING *md Tiled/
